@@ -5,4 +5,4 @@ When a new job ad is added to the website, the model generated in the first part
 
 The NLP model can be seen in the task1 and task2_3 notebook files and the Flask website vode can be seen in the Flask.py file.
 
-The job ads used and the fo9ur different job categories used to train the model and be seen in the data.zip file.
+The job ads used and the four different job categories used to train the model and be seen in the data.zip file.
