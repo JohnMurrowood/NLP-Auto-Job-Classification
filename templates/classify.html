@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }} " type="text/css" media="all" />
+    <div class="navbar">
+        <ul>
+            {% if session['username'] %}
+            <li><a href="/login""> Home</a> </li>
+            <li><a href="/classify""> Create Job</a> </li>
+            <li><a href="/logout""> logout</a> </li>
+            {% else %}
+            <li> <a href="/""> Home</a> </li>
+            <li><a href="/login""> login</a> </li>
+            {% endif %}
+        </ul>
+      
+    </div>
+<h1>Please enter job ad details below</h1>
+<p>Press classify to get category recommendation and ad upload confirmation</p>
+<form action = "/classify" method = "POST">
+    <p>Title:</p>
+    <p><input type = "text" name = "title" style="width:100%" value="{{ title }}" required/></p>
+    <p>Company:</p>
+    <p><input type = "text" name = "company" style="width:100%" value="{{ company }}" required/></p>
+    <p>Description:</p>
+    <textarea type="text" name="description" style="height:200px; width:100%" required> {{ description }} </textarea>
+    <p><input type = "submit" value = "classify" /></p>
+    <p> {{ predicted_message }} </p>
+ </form> 
+
+
+ </html>
+
+

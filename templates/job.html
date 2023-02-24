@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }} " type="text/css" media="all" />
+    <div class="navbar">
+        <ul>
+            {% if session['username'] %}
+            <li><a href="/login""> Home</a> </li>
+            <li><a href="/classify""> Create Job</a> </li>
+            <li><a href="/logout""> logout</a> </li>
+            {% else %}
+            <li> <a href="/""> Home</a> </li>
+            <li><a href="/login""> login</a> </li>
+            {% endif %}
+        </ul>
+      
+    </div>
+
+<h1>Job Advertisment Details</h1>
+
+<p>Title: {{ title }}</p>
+<p>Compnay: {{ company }}</p>
+<p>Category: {{ category }}</p>
+<p>Description:</p>
+<p>{{ description }}</p>
+
+
+</html>

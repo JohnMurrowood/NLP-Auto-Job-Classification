@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }} " type="text/css" media="all" />
+    <div class="navbar">
+        <ul>
+            {% if session['username'] %}
+            <li><a href="/login""> Home</a> </li>
+            <li><a href="/classify""> Create Job</a> </li>
+            <li><a href="/logout""> logout</a> </li>
+            {% else %}
+            <li> <a href="/""> Home</a> </li>
+            <li><a href="/login""> login</a> </li>
+            {% endif %}
+        </ul>
+      
+    </div>
+<h1>Confirmation</h1>
+<p>Please read through job ad upload before finallising</p>
+<p>If unhappy with category recommendation this can be changed below in dropdown menu</p>
+<form action = "/postjob" method = "POST">
+    <p>Title: {{ title }}</p>
+    <p>Compnay: {{ company }}</p>
+    <p>Description:</p>
+    <p>{{ description }}</p>
+    <p>{{ predicted_message }}</p>
+
+    <label> Change Category </label>  
+        <select name='category' id='category'>  
+        <option value = "Engineering"> Engineering </option>  
+        <option value = "Accounting/Finance"> Accounting/Finance</option>  
+        <option value = "Healthcare/Nursing"> Healthcare/Nursing</option>  
+        <option value = "Sales"> Sales</option>  
+        </select>  
+    
+        <p><input type = "submit" value = "Change Category" /></p>   
+
+ </form> 
+
+<p>If happy with recomended Category press post</p>
+<div class="button">
+<a href="/user/{{ session['username'] }}" type="submit">Post</a>
+</div>
+
+ </html>

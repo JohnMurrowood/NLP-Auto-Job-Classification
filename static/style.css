@@ -1,0 +1,39 @@
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+
+.navbar li {
+    padding-left:30px;
+  padding-right:30px;
+float: left;
+justify-content: space-between;
+
+}
+
+.navbar li a {
+display: block;
+color: white;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+}
+
+.navbar li a:hover:not(.active) {
+background-color: rgb(19, 20, 19);
+}
+
+.button {
+    width: 200px;
+    transition-duration: 0.4s;
+
+}
+
+.button:hover {
+    background-color: #a0a3a0;
+    color: white;
+  }

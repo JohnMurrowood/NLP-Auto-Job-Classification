@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }} " type="text/css" media="all" />
+    <div class="navbar">
+        <ul>
+            {% if session['username'] %}
+            <li><a href="/login""> Home</a> </li>
+            <li><a href="/classify""> Create Job</a> </li>
+            <li><a href="/logout""> logout</a> </li>
+            {% else %}
+            <li> <a href="/""> Home</a> </li>
+            <li><a href="/login""> login</a> </li>
+            {% endif %}
+        </ul>
+      
+    </div>
+    <h1>Hello {{ session['username'] }}, Welcome to Job Search</h1>
+    <h3>Select boxes to refine job search by category:</h3>
+    <form action = "/user/<{{ session['username'] }}>" method = "POST">
+        <input type="checkbox" name="cat" value="all">
+        <label for="All categories"> All categories</label><br>
+        <input type="checkbox" name="cat" value="Accounting/Finance">
+        <label for="Accounting/Finance"> Accounting/Finance</label><br>
+        <input type="checkbox" name="cat" value="Engineering">
+        <label for="Engineering"> Engineering</label><br>
+        <input type="checkbox" name="cat" value="Sales">
+        <label for="Sales"> Sales</label><br>
+        <input type="checkbox" name="cat" value="Healthcare/Nursing">
+        <label for="Healthcare/Nursing"> Healthcare/Nursing</label><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <h3>Below is list preview of job advertisements</h3>
+    <p>Click job title for in depth job description</p>
+
+    <body>
+    {% for i in rows %}
+        <ul>
+            <li><a href="{{ url_for('job', title = jobs['Title'][i]) }}" type="submit">Job Title: {{ jobs['Title'][i] }}</a></li>
+            <li>Job Company: {{ jobs['Company'][i] }}</li>
+            <li>Job Category: {{ jobs['Category'][i] }}</li>
+        </ul>
+        
+    {% endfor %}
+    </body>        
+
+</html>
